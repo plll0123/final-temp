@@ -13,12 +13,11 @@ public class UserService {
 
     private final UserRepository userRepository;
 
-    public User addUser(final String loginId, final String password, final String name) {
+    public User addUser(final String loginId) {
         User result = userRepository.findByLoginId(loginId);
         if (result != null){
             throw new UserException(UserErrorResult.DUPLICATE_USER_REGISTER);
         }
-
         return null;
     }
 }
