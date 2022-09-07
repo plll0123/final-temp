@@ -6,11 +6,16 @@ import org.springframework.http.HttpStatus;
 
 @Getter
 @RequiredArgsConstructor
-public enum UserErrorResult {
+public enum UserErrorResult implements SuperErrorResult{
 
-    DUPLICATE_USER_REGISTER(HttpStatus.BAD_REQUEST, "Duplicate User Register Request")
+    DUPLICATE_USER_ID(HttpStatus.CONFLICT, "Duplicate Login ID Register Request")
     ,;
 
-    private final HttpStatus status;
+    private final HttpStatus httpStatus;
     private final String message;
+
+    @Override
+    public String getName() {
+        return this.name();
+    }
 }
